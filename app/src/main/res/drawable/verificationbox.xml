@@ -1,0 +1,26 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Focused state -->
+    <item android:state_focused="true">
+        <shape>
+            <solid android:color="#FFA500" /> <!-- Orange background color -->
+            <stroke
+                android:width="2dp"
+                android:color="#FFA500" /> <!-- Orange border color -->
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
+        <shape>
+            <solid android:color="#FFFFFF" /> <!-- Default background color -->
+            <stroke
+                android:width="2dp"
+                android:color="#CCCCCC" /> <!-- Default border color -->
+        </shape>
+    </item>
+</selector>
+
+
+
+
+
+

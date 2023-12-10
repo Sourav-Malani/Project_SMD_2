@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60"
+    android:fillColor="#DADADA">
+
+    <group
+        android:id="@+id/Rectangle_105">
+
+        <!-- Adjusted pathData for the rectangle with rounded corners -->
+        <path
+            android:pathData="M10,0
+                l40,0
+                a10,10 0 0 1 10,10
+                l0,40
+                a10,10 0 0 1 -10,10
+                l-40,0
+                a10,10 0 0 1 -10,-10
+                l0,-40
+                a10,10 0 0 1 10,-10
+                z"
+            android:fillColor="#FFFFFF" />
+
+        <!-- Lines inside the rectangle -->
+        <path
+            android:pathData="M20,26H40"
+            android:strokeColor="#111719"
+            android:strokeWidth="2"
+            android:strokeLineCap="round" />
+
+        <path
+            android:pathData="M20,32H36"
+            android:strokeColor="#111719"
+            android:strokeWidth="2"
+            android:strokeLineCap="round" />
+    </group>
+
+</vector>

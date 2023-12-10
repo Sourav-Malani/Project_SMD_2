@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="177dp"
+    android:height="206dp"
+    android:viewportWidth="177"
+    android:viewportHeight="206"
+    >
+    <group>
+        <clip-path
+            android:pathData="M6 1H171C173.761 1 176 3.23858 176 6V200C176 202.761 173.761 205 171 205H6C3.23858 205 1 202.761 1 200V6C1 3.23858 3.23858 1 6 1Z"
+            />
+        <group
+            android:translateX="0.641"
+            android:translateY="-5.156"
+            android:pivotX="88.5"
+            android:pivotY="103"
+            android:scaleX="2.48"
+            android:scaleY="20.722"
+            android:rotation="53.746"
+            >
+            <path
+                android:pathData="M1 1V205H176V1"
+                >
+                <aapt:attr name="android:fillColor">
+                    <gradient
+                        android:type="linear"
+                        android:startX="44.75"
+                        android:startY="103"
+                        android:endX="132.25"
+                        android:endY="103"
+                        >
+                        <item
+                            android:color="#FD5C2E"
+                            android:offset="0"
+                            />
+                        <item
+                            android:color="#FE7122"
+                            android:offset="1"
+                            />
+                    </gradient>
+                </aapt:attr>
+            </path>
+        </group>
+    </group>
+    <group>
+        <clip-path
+            android:pathData="M0 0V206H177V0M6 1H171C173.761 1 176 3.23858 176 6V200C176 202.761 173.761 205 171 205H6C3.23858 205 1 202.761 1 200V6C1 3.23858 3.23858 1 6 1Z"
+            />
+        <path
+            android:pathData="M6 1H171C173.761 1 176 3.23858 176 6V200C176 202.761 173.761 205 171 205H6C3.23858 205 1 202.761 1 200V6C1 3.23858 3.23858 1 6 1Z"
+            android:strokeWidth="2"
+            android:strokeColor="#F6752C"
+            />
+    </group>
+</vector>

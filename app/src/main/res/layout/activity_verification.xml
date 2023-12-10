@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".signup">
+
+
+    <View
+        android:id="@+id/ellipse_126"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-41dp"
+        android:layout_marginTop="-12dp"
+        android:background="@drawable/ellipse_1" />
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+
+    <ImageView
+        android:id="@+id/group_17955"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="39dp"
+        android:src="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/ellipse_127"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-27dp"
+        android:layout_marginTop="-65dp"
+        android:src="@drawable/cir" />
+
+    <ImageView
+        android:id="@+id/ellipse_128"
+        android:layout_width="181dp"
+        android:layout_height="181dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="317dp"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/cir1" />
+
+
+
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:text="Verification Code "
+        android:textStyle="bold"
+        android:gravity="center_vertical|start"
+        android:textSize="36.41sp"
+        android:textColor="#000000"
+        android:lineHeight="44sp"
+        android:fontFamily="sans-serif"
+        />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="15dp"
+        android:gravity="top"
+        android:text="Please type the verification code sent to nayyarmalik@gmail.com"
+        android:textColor="#9796A1"
+        android:textSize="16sp" />
+
+
+
+    <!-- res/layout/verification_code_screen.xml -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/lay1"
+        android:layout_below="@+id/text"
+        android:layout_height="100dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/digit1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/verification_box" />
+
+        <EditText
+            android:id="@+id/digit2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/verification_box" />
+
+        <EditText
+            android:id="@+id/digit3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/verification_box" />
+
+        <EditText
+            android:id="@+id/digit4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:maxLength="1"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:background="@drawable/verification_box" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/textbl"
+        android:layout_below="@+id/lay1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I don't recieve code! "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please resend"
+            android:textColor="@color/orange"
+            android:textSize="14sp"
+            android:textAppearance="@style/sofia_pro_medium"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

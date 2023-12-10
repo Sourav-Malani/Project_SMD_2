@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".create_your_own_pizza"
+    android:background="#F9F7F4"
+    >
+    <ImageView
+        android:id="@+id/create_your_own_top_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="-10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/create_your_own_top_image"
+        android:alpha="0.7"
+        />
+    />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/create_your_own_back" />
+
+    <TextView
+        android:id="@+id/step_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/sofia_pro_semibold"
+        android:gravity="center_horizontal"
+        android:text="Step 1/2"
+        android:textSize="19sp"
+        style="bold"
+        app:layout_constraintRight_toRightOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+      <RelativeLayout
+            android:id="@+id/create_your_own_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/step_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="10dp"
+          >
+          <TextView
+              android:id="@+id/create_your_own_text_1_1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Create Your Own Pizza"
+              android:textSize="28sp"
+              android:fontFamily="@font/signika_semibold"
+              style="Bold"
+              ></TextView>
+          <TextView
+              android:id="@+id/create_your_own_text_1_2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Create your own pizza by choosing a crust, sauce and toppings! Select from three crust sizes &amp; thincknesses, choice of sauce over 10 individual toppings"
+              android:textSize="18sp"
+              android:fontFamily="@font/signika_light"
+              app:layout_constraintTop_toBottomOf="@+id/create_your_own_text_1_1"
+              app:layout_constraintStart_toStartOf="@+id/create_your_own_text_1_1"
+              app:layout_constraintEnd_toEndOf="@+id/create_your_own_text_1_1"
+              android:layout_marginTop="40dp"
+              ></TextView>
+          <TextView
+              android:id="@+id/create_your_own_text_1_3"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="You can choose upto 4 FREE toppins and 4 Extra toppings for £0.55 each"
+              android:textSize="19sp"
+              android:fontFamily="@font/signika_regular"
+              style="Bold"
+              app:layout_constraintTop_toBottomOf="@+id/create_your_own_text_1_2"
+              app:layout_constraintStart_toStartOf="@+id/create_your_own_text_1_2"
+              app:layout_constraintEnd_toEndOf="@+id/create_your_own_text_1_2"
+              android:layout_marginTop="125dp"
+              ></TextView>
+      </RelativeLayout>
+<RelativeLayout
+    android:id="@+id/sizr_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/create_your_own_text_1"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/create_your_own_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Size"
+        android:alpha="0.5"
+        android:fontFamily="@font/signika_semibold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:weightSum="4"
+        >
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_selected_1_rl"
+            android:layout_width="80dp"
+            android:layout_height="62dp"
+            android:background="@drawable/create_your_own_rectangle_selected"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/sizeTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 inch"
+                android:textColor="@color/black"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                ></TextView>
+            <TextView
+                android:id="@+id/priceTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="£5.99"
+                android:textColor="@color/orange"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+
+                ></TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_selected_2_rl"
+            android:layout_width="80dp"
+            android:layout_height="62dp"
+            android:background="@drawable/create_your_own_rectangle_unselected"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/sizeTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9 inch"
+                android:textColor="@color/black"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:alpha="0.5"
+                ></TextView>
+            <TextView
+                android:id="@+id/priceTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="£7.99"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/signika_semibold"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+
+                ></TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_selected_3_rl"
+            android:layout_width="80dp"
+            android:layout_height="62dp"
+            android:background="@drawable/create_your_own_rectangle_unselected"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/sizeTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 inch"
+                android:textColor="@color/black"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:alpha="0.5"
+                ></TextView>
+            <TextView
+                android:id="@+id/priceTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="£9.99"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/signika_semibold"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+
+                ></TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_selected_4_rl"
+            android:layout_width="80dp"
+            android:layout_height="62dp"
+            android:background="@drawable/create_your_own_rectangle_unselected"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            >
+            <TextView
+                android:id="@+id/sizeTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13.5 inch"
+                android:textColor="@color/black"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:alpha="0.5"
+                ></TextView>
+            <TextView
+                android:id="@+id/priceTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="£15.99"
+                android:textColor="@color/dark"
+                android:fontFamily="@font/signika_semibold"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+
+                ></TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+<RelativeLayout
+    android:id="@+id/crust_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/sizr_rl"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/crust_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crust"
+        android:alpha="0.5"
+        android:fontFamily="@font/signika_semibold"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:weightSum="2"
+        >
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_crust_selected_1_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/create_your_own_rectangle_crust_selected"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <TextView
+                android:id="@+id/crust_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/signika_semibold"
+                android:text="Classic Crust"
+                android:textColor="@color/orange"
+                android:textSize="18dp"></TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/create_your_own_rectangle_crust_selected_2_rl"
+            android:layout_width="168dp"
+            android:layout_height="62dp"
+            android:background="@drawable/create_your_own_rectangle_crust_unselected"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/crust_text_2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Italian Crust"
+                android:textColor="#24262F"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/signika_regular"
+                android:alpha="0.5"
+                ></TextView>
+            <TextView
+                android:id="@+id/crust_text_2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+£1.00"
+                android:textColor="#24262F"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="@font/signika_semibold"
+                android:alpha="0.8"
+
+
+                ></TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+<RelativeLayout
+    android:id="@+id/topping_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/crust_rl"
+    android:orientation="vertical"
+    android:layout_marginTop="1dp">
+    <TextView
+        android:id="@+id/topping_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toppings"
+        android:alpha="0.5"
+        android:fontFamily="@font/signika_semibold"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp"
+        android:weightSum="2"
+        >
+     <ImageButton
+         android:id="@+id/pizzaImage1"
+         android:layout_width="146dp"
+         android:layout_height="156dp"
+         android:background="@drawable/create_your_own_pizza1_selected"
+         android:layout_weight="1"
+         android:layout_marginRight="10.5dp"
+         >
+     </ImageButton>
+
+    <ImageButton
+        android:id="@+id/pizzaImage2"
+        android:layout_width="146dp"
+        android:layout_height="156dp"
+        android:background="@drawable/create_your_own_pizza2_unselected"
+        android:layout_weight="1"
+        android:layout_marginLeft="10.5dp"
+        >
+    </ImageButton>
+    </LinearLayout>
+
+</RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/next_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/topping_rl"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="339dp"
+        android:layout_height="66dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#F6752C"
+        android:fontFamily="@font/signika_semibold"
+        android:text="NEXT"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="19sp" />
+</RelativeLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

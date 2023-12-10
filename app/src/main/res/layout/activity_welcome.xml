@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".welcome"
+    android:background="@drawable/backgroud_welcome"
+
+    >
+
+<!--    Background Image Blue Shade-->
+    <ImageView
+        android:id="@+id/rectangle_4"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="-1dp"
+        android:background="@drawable/rectangle_4" />
+
+<!--Top Text-->
+<RelativeLayout
+    android:id="@+id/TopTextRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="160dp"
+    >
+    <TextView
+        android:id="@+id/welcome_to_1"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="28dp"
+        android:layout_alignParentTop="true"
+        android:text="@string/welcome_to_1"
+        android:textAppearance="@style/welcome_to_1"
+        android:lineSpacingExtra="-16sp"
+        android:gravity="top" />
+    <TextView
+        android:id="@+id/welcome_to_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/welcome_to_1"
+        android:text="@string/welcome_to_2"
+        android:textAppearance="@style/welcome_to_2"
+        android:textSize="53sp"
+        android:fontFamily="@font/sofia"
+        android:textColor="@color/orange"
+        android:lineHeight="69sp"
+        android:lineSpacingExtra="-16sp"
+        android:gravity="top"
+        android:layout_below="@id/welcome_to_1"
+        android:layout_marginTop="-20dp"
+        />
+    <TextView
+        android:id="@+id/your_favour"
+        android:layout_width="266dp"
+        android:layout_height="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:text="@string/your_favour"
+        android:fontFamily="@font/sofia_pro_regular"
+        android:textSize="18sp"
+        android:textColor="#30384F"
+        android:lineSpacingExtra="2sp"
+        android:translationY="-1.25sp"
+        android:gravity="top"
+        android:alpha="0.87"
+        />
+
+</RelativeLayout>
+<!--    Sign In With-->
+<RelativeLayout
+        android:id="@+id/SignInWithRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TopTextRL"
+        android:layout_marginTop="250dp"
+
+    >
+    <TextView
+        android:id="@+id/sign_in_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:text="sign in with"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/sofia_pro_medium"
+        />
+    <View
+        android:id="@+id/line_1"
+        android:layout_width="84dp"
+        android:layout_height="3dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/line_71" />
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="84dp"
+        android:layout_height="3dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/line_71" />
+
+</RelativeLayout>
+<!--    Sign In Buttons-->
+<RelativeLayout
+    android:id="@+id/SignInButtonsRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/SignInWithRL"
+    android:layout_marginTop="10dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="30dp"
+        android:layout_width="147dp"
+        android:layout_height="57dp"
+        app:cardElevation="8dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginLeft="20dp">
+        <Button
+            android:id="@+id/btn_facebook"
+            android:layout_width="147dp"
+            android:layout_height="57dp"
+            android:drawablePadding="0dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="FACEBOOK"
+            android:textSize="13sp"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/logo_fb"
+            android:padding="10dp"
+            android:backgroundTint="@color/white"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="30dp"
+        android:layout_width="147dp"
+        android:layout_height="57dp"
+        app:cardElevation="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        >
+        <Button
+            android:id="@+id/btn_google"
+            android:layout_width="147dp"
+            android:layout_height="57dp"
+            android:drawablePadding="0dp"
+            android:gravity="center"
+            android:text="GOOGLE"
+            android:textSize="13dp"
+            android:fontFamily="@font/sofia_pro_medium"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/icons_google"
+            android:padding="10dp"
+            android:backgroundTint="@color/white"
+            />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+<!--    Start With-->
+<RelativeLayout
+    android:id="@+id/StartWithRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/SignInButtonsRL"
+    android:layout_marginTop="20dp"
+    >
+    <ImageButton
+        android:id="@+id/btn_startWithEmailorPhone"
+        android:layout_width="315dp"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_transparent" />
+    <TextView
+        android:id="@+id/start_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start with email or phone"
+        android:fontFamily="@font/sofia_pro_medium"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:lineHeight="23sp"
+        />
+
+</RelativeLayout>
+<!--    Already Have-->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/StartWithRL"
+    android:layout_marginTop="10dp"
+    >
+    <TextView
+        android:id="@+id/already_hav"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="64dp"
+        android:fontFamily="@font/sofiapro_light"
+        android:gravity="center_horizontal|top"
+        android:text="Already have an account?"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line_"
+        android:layout_width="44dp"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="264dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/line_71" />
+
+    <TextView
+        android:id="@+id/sign_in"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:fontFamily="@font/sofiapro_light"
+        android:lineHeight="22sp"
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+
+</RelativeLayout>

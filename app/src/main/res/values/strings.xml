@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">SMD_Project</string>
+    <string name="food">
+      CheeSy
+    </string>
+    <string name="welcome_to_1">
+      Welcome to\n
+    </string>
+    <string name="welcome_to_2">
+      CheesyBites
+    </string>
+    <string name="your_favour">
+      Your favourite food delivered fast at your doorstep.
+    </string>
+    <string name="choose_from">
+     Choose From Our Options Of Designa \nAnd Make Your Own Pizza.
+    </string>
+    <string name="create_your">
+      Create Your Own Pizza
+    </string>
+    <!-- strings.xml -->
+    <string name="some_id">
+       Rs14.25
+    </string>
+    <string name="fresh_farm_">
+     Fresh Farm House
+    </string>
+    <string name="crisp_capsi">
+     crisp capsicum, succulent mushrooms and fresh tomatoes
+    </string>
+    <string name="title_activity_sidenavigation">sidenavigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="web_client_id">28583618269-uinlju1lq4n2fa088ic7705q5u9kbrev.apps.googleusercontent.com</string>
+    <string name="title_activity_nav_bar">nav_bar</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="facebook_app_id">368717898893809</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">a248f7a3e53d6b9cf43c748dbc1014ce</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_create_your_own_step2">create_your_own_step_2</string>
+</resources>

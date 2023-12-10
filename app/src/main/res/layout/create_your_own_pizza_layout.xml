@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        app:cardCornerRadius="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+    <RelativeLayout
+        android:id="@+id/firstCartItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:background="#F6F4F4"
+
+        >
+
+        <TextView
+            android:id="@+id/itemCountYO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="88dp"
+            android:fontFamily="@font/sofia_pro_semibold"
+            android:textSize="16sp"
+            android:text="02" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/cart_pizza1" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sofia_pro_regular"
+            android:gravity="top"
+            android:text="Create Your Own"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <ImageButton
+            android:id="@+id/cross"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sofia_pro_regular"
+            android:gravity="top"
+            android:background="@drawable/red_cross"
+            android:layout_marginRight="30dp"
+            />
+
+        <TextView
+            android:id="@+id/txt_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/itemName"
+            android:text="Left Half:"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/brown"
+            android:fontFamily="@font/sofiapro_light"
+            />
+
+        <TextView
+            android:id="@+id/itemSauce_text_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/txt_left"
+            android:text="Sauce: "
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemSauce_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="165dp"
+            android:layout_below="@+id/txt_left"
+            android:text="Tomato"
+            android:textSize="11sp"
+            android:textColor="@color/dark_gray"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemToppings_text_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/itemSauce_text_left"
+            android:text="Toppings: "
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemToppings_left"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="175dp"
+            android:layout_below="@+id/itemSauce_text_left"
+            android:text="Pineaple, Chicken, Beef, Onion"
+            android:textSize="11sp"
+            android:textColor="@color/dark_gray"
+            android:fontFamily="@font/signika_light"
+            />
+
+        <TextView
+            android:id="@+id/txt_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/itemToppings_left"
+            android:text="Right Half:"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/brown"
+            android:fontFamily="@font/sofiapro_light"
+            />
+
+        <TextView
+            android:id="@+id/itemSauce_text_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/txt_right"
+            android:text="Sauce: "
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemSauce_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="165dp"
+            android:layout_below="@+id/txt_right"
+            android:text="BBQ"
+            android:textSize="11sp"
+            android:textColor="@color/dark_gray"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemToppings_text_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_below="@+id/itemSauce_text_right"
+            android:text="Toppings: "
+            android:textSize="11sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/signika_light"
+            />
+        <TextView
+            android:id="@+id/itemToppings_right"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="175dp"
+            android:layout_below="@+id/itemSauce_text_right"
+            android:text="Pineaple, Chicken, Beef, Onion"
+            android:textSize="11sp"
+            android:textColor="@color/dark_gray"
+            android:fontFamily="@font/signika_light"
+            />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="135dp"
+            android:text="$14.1"
+            android:textAppearance="@style/cart_price"
+            android:textColor="#FE724C"
+            android:textSize="14sp"
+            android:layout_below="@+id/itemToppings_right"
+            android:layout_marginTop="4dp"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_minus_item"
+            android:layout_width="58dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="73dp"
+            android:background="@drawable/group_17841" />
+
+        <ImageButton
+            android:id="@+id/btn_plus_item"
+            android:layout_width="58dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="335dp"
+            android:layout_marginTop="77dp"
+            android:background="@drawable/group_17840" />
+
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

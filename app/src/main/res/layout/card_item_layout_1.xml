@@ -1,0 +1,75 @@
+<androidx.cardview.widget.CardView android:layout_width="195dp"
+    android:layout_height="215dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="10dp"
+    android:backgroundTint="#F5F3EF"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Parent FrameLayout 'FL' -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:background="#F5F3EF"
+            >
+
+            <RelativeLayout
+                android:layout_width="195dp"
+                android:layout_height="195dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_bottom_corners"
+
+                >
+                <ImageView
+                    android:id="@+id/pizzaImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="135dp"
+                    android:src="@drawable/pizza_image"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true">
+                </ImageView>
+                <TextView
+                    android:id="@+id/pizzaText"
+                    android:layout_width="135dp"
+                    android:layout_height="15dp"
+                    android:text="@string/create_your"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/pizzaImage"
+                    android:textAppearance="@style/create_your"
+                    android:lineSpacingExtra="-2sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+                <TextView
+                    android:id="@+id/pizzaDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pizzaText"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/choose_from"
+                    android:textAppearance="@style/choose_from"
+                    android:lineSpacingExtra="0sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:alpha="0.8">
+                </TextView>
+            </RelativeLayout>
+        </FrameLayout>
+        <!-- Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_createNow"
+            android:layout_width="111dp"
+            android:layout_height="35dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/rectangle_white"
+            android:fontFamily="@font/signika_semibold"
+            android:text="Create Now"
+            android:textSize="12sp"
+            android:textColor="@android:color/background_dark"
+            android:elevation="0dp"
+            android:layout_marginBottom="8dp"
+            android:paddingBottom="2dp"
+            />
+
+    </androidx.cardview.widget.CardView>

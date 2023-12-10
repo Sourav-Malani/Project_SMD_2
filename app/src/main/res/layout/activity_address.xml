@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".signup">
+
+
+
+
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="39dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/group_17955"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="Add new address"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/lay"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="22dp"
+        android:gravity="top"
+        android:text="Full name"
+        android:textColor="#9796A1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/usernameText"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/full_name"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:background="@drawable/rectanglebox"
+        android:hint="Enter your name"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+
+
+
+    <TextView
+        android:id="@+id/phno"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/usernameText"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="22dp"
+        android:gravity="top"
+        android:text="Mobile Number"
+        android:textColor="#9796A1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/phText"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phno"
+        android:layout_marginTop="9dp"
+        android:inputType="phone"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:background="@drawable/rectanglebox"
+        android:hint="Enter phone number"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/phText"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="22dp"
+        android:gravity="top"
+        android:text="City"
+        android:textColor="#9796A1"
+        android:textSize="16sp" />
+
+    <!-- Country Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:id="@+id/cn_input"
+        android:layout_below="@+id/city"
+        android:hint="Select City"
+        app:boxStrokeColor="#3F51B5"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxStrokeWidth="1dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        app:boxBackgroundColor="#80B3B3B3"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/filled_exposed_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/street"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/cn_input"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="22dp"
+        android:gravity="top"
+        android:text="Street (include house number)"
+        android:textColor="#9796A1"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/streetText"
+        android:layout_width="367dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/street"
+        android:layout_marginTop="9dp"
+        android:inputType="phone"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:background="@drawable/rectanglebox"
+        android:hint="street"
+        android:textStyle="bold"
+        android:padding="16dp" />
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="200dp"
+        android:layout_below="@+id/streetText"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="25dp"
+        android:text="Save"
+        android:background="@drawable/bavkground_button"
+        android:textColor="#FFFFFF"
+        android:paddingStart="16dp"
+        android:gravity="center_horizontal|top"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToOutline="true"
+    android:background="@color/orange"
+    tools:context=".SplashScreen">
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+    <ImageView
+        android:id="@+id/pizza_logo_splash"
+        android:layout_width="338dp"
+        android:layout_height="296dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="169dp"
+        android:layout_marginTop="-61dp"
+        android:layout_marginEnd="-96dp"
+        android:src="@drawable/pizza" />
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+    <View
+        android:id="@+id/logo_app"
+        android:layout_width="190dp"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/logo_app" />
+
+    <TextView
+        android:id="@+id/food"
+        android:layout_width="126dp"
+        android:layout_height="52dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:text="@string/food"
+        android:textAppearance="@style/food"
+        android:gravity="center_horizontal|center_vertical"
+        />
+    <TextView
+        android:id="@+id/hub"
+        android:layout_width="89dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="213dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:text="Bites"
+        android:textAppearance="@style/hub"
+        android:lineSpacingExtra="8sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:alpha="0.6"
+        />
+
+</RelativeLayout>
