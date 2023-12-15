@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewStarters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Add any other views or layouts as needed -->
+
+</LinearLayout>

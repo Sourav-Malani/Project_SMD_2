@@ -1,7 +1,9 @@
 package com.ass2.Adapters;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -134,30 +136,79 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return list.size();
     }
 
-    private boolean addSimpleItemToLocalDB( String name,String price,
-                                            String description, int quantity,int image){
-
-        CartModel newCartItem = new CartModel(
-                quantity,
-                name,
-                price,
-                description,
-                image,
-                1 );
-
-        // Add the item to the database
+    private boolean addSimpleItemToLocalDB(String name, String price, String description, int quantity, int image) {
         CartDBHelper dbHelper = new CartDBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        long insertSuccess = dbHelper.insertCartItem(newCartItem);
 
-        db.close(); // Close the database connection
-        if(insertSuccess == -1)
-            return false;
-        else
-            return true;
+        // Check if the item already exists in the database
+        String selection = CartDBHelper.COLUMN_ITEM_NAME + " = ?";
+        String[] selectionArgs = {name};
+        Cursor cursor = db.query(CartDBHelper.TABLE_CART, null, selection, selectionArgs, null, null, null);
 
+        if (cursor != null && cursor.getCount() > 0) {
+            // The item already exists, so update its quantity
+            cursor.moveToFirst();
+            int currentQuantity = cursor.getInt(cursor.getColumnIndex(CartDBHelper.COLUM_ITEM_QUANTITY));
+            int newQuantity = currentQuantity + quantity;
 
+            ContentValues values = new ContentValues();
+            values.put(CartDBHelper.COLUM_ITEM_QUANTITY, newQuantity);
+
+            int updateSuccess = db.update(CartDBHelper.TABLE_CART, values, selection, selectionArgs);
+            cursor.close();
+            db.close();
+
+            if (updateSuccess > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            // The item doesn't exist, so insert a new entry
+            CartModel newCartItem = new CartModel(
+                    quantity,
+                    name,
+                    price,
+                    description,
+                    image,
+                    1);
+
+            ContentValues values = new ContentValues();
+            values.put(CartDBHelper.COLUMN_ITEM_NAME, newCartItem.getItemName());
+            values.put(CartDBHelper.COLUMN_ITEM_TYPE, newCartItem.getViewType());
+            values.put(CartDBHelper.COLUM_ITEM_QUANTITY, newCartItem.getItemCount());
+            values.put(CartDBHelper.COLUMN_ITEM_IMAGE_URL, newCartItem.getItemImage());
+            values.put(CartDBHelper.COLUMN_ITEM_PRICE, newCartItem.getItemPrice());
+            values.put(CartDBHelper.COLUMN_ITEM_DESCRIPTION, newCartItem.getItemDescription());
+            values.put(CartDBHelper.COLUMN_DATE, newCartItem.getDateTime());
+
+            // Handle attributes based on item type
+            switch (newCartItem.getViewType()) {
+                case 0:
+                    // Handle Create Your Own Pizza specific fields
+                    break;
+                case 1:
+                    // Handle Simple Pizza specific fields
+                    break;
+                case 2:
+                    // Handle Other Items specific fields
+                    break;
+                default:
+                    // Handle default case or error
+                    break;
+            }
+
+            long insertSuccess = db.insert(CartDBHelper.TABLE_CART, null, values);
+            db.close();
+
+            if (insertSuccess != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
+
 
     // ViewHolder for layout 1
     private static class Layout1ViewHolder extends RecyclerView.ViewHolder {

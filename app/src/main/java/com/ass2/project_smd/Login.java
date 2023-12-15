@@ -242,6 +242,10 @@ public class Login extends AppCompatActivity {
         editor.putString("loginMethod", "email");
         editor.putString("name", sharedPrefs.getString("name", ""));
         editor.putString("email", sharedPrefs.getString("email", ""));
+        editor.putString("profilePhotoUrl", sharedPrefs.getString("profilePhotoUrl", ""));
+
+
+
         editor.apply();
 
             // Navigate to the Home activity
@@ -256,21 +260,21 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void navigateToNavBarActivity(UserProfileModel result){
-        // Create an Intent to start the NavBarActivity
-        Intent intent = new Intent(Login.this, nav_bar.class);
-
-        // Pass the user data obtained from the server to the NavBarActivity
-        intent.putExtra("userFullName", result.getFullName());
-        intent.putExtra("userEmail", result.getEmail());
-        intent.putExtra("userPassword", result.getPassword());
-        intent.putExtra("userDeliveryAddress", result.getDeliveryAddress());
-        intent.putExtra("userPhoneNo", result.getPhoneNo());
-        intent.putExtra("userImageURL", result.getImageURL());
-
-
-        // Start the NavBarActivity
-        startActivity(intent);
-
-    }
+//    private void navigateToNavBarActivity(UserProfileModel result){
+//        // Create an Intent to start the NavBarActivity
+//        Intent intent = new Intent(Login.this, nav_bar.class);
+//
+//        // Pass the user data obtained from the server to the NavBarActivity
+//        intent.putExtra("userFullName", result.getFullName());
+//        intent.putExtra("userEmail", result.getEmail());
+//        intent.putExtra("userPassword", result.getPassword());
+//        intent.putExtra("userDeliveryAddress", result.getDeliveryAddress());
+//        intent.putExtra("userPhoneNo", result.getPhoneNo());
+//        intent.putExtra("userImageURL", result.getImageURL());
+//
+//
+//        // Start the NavBarActivity
+//        startActivity(intent);
+//
+//    }
 }

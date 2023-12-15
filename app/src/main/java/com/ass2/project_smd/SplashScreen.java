@@ -9,11 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ass2.Helper.User;
 import com.ass2.Helper.UserDatabaseHelper;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen  extends AppCompatActivity {
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
+    //FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,21 +36,14 @@ public class SplashScreen  extends AppCompatActivity {
                     String loginMethod = sharedPrefs.getString("loginMethod", "");
 
                     Intent intent = null;
-                    if (isLogged && loginMethod.equals("google")) { // If the user is logged in already.
+
+                    // Check if the user is logged in with Google
+                    GoogleSignInAccount receivedAccount = GoogleSignIn.getLastSignedInAccount(SplashScreen.this);
+
+                    if (isLogged && loginMethod.equals("google") && receivedAccount!=null) { // If the user is logged in already.
                         final String[] userEmail = {""}; // Final variable to store email
+                        userEmail[0] = receivedAccount.getEmail();
 
-                        UserDatabaseHelper userDatabaseHelper = new UserDatabaseHelper();
-                        userDatabaseHelper.getUserData(mAuth.getCurrentUser().getEmail(), new UserDatabaseHelper.UserDataCallback() {
-                            @Override
-                            public void onUserDataReceived(User userData) {
-                                userEmail[0] = userData.getEmail();
-                            }
-
-                            @Override
-                            public void onUserDataError(String error) {
-                                // Handle error if necessary
-                            }
-                        });
 
                         // Start the new activity inside this callback
                         intent = new Intent(SplashScreen.this, nav_bar.class);

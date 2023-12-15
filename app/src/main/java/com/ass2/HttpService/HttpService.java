@@ -12,10 +12,9 @@ import retrofit2.http.Part;
 public interface HttpService {
 
     @Multipart
-    @POST("upload_profile_pic.php")
+    @POST("upload_photo.php")
     Call<UserProfileModel> callUploadApi(@Part MultipartBody.Part image,
-                                         @Part("userEmail") RequestBody email,
-                                         @Part("imageType") RequestBody imageType);
+                                         @Part("userEmail") RequestBody email);
 
     @Multipart
     @POST("update_profile.php") // Replace with the actual API endpoint for updating the profile

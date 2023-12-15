@@ -1,0 +1,131 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ass2.NavBarFragments.DelivaryAddressFragment">
+
+    <ImageButton
+        android:id="@+id/backDelivaryAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/sofia_pro_medium"
+        android:gravity="center_horizontal"
+        android:text="Add/Edit Delivary Address"
+        android:textAlignment="center"
+        android:textColor="#111719"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="@+id/backDelivaryAddress"
+        app:layout_constraintStart_toEndOf="@+id/backDelivaryAddress"
+        app:layout_constraintTop_toTopOf="@+id/backDelivaryAddress" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="22dp"
+            android:gravity="top"
+            android:text="Full name"
+            android:textColor="#9796A1"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/fullNameBox"
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/full_name"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/rectangle_41"
+            android:hint="User's name from database/google"
+            android:textStyle="bold"
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/phoneNoText"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/fullNameBox"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="22dp"
+            android:gravity="top"
+            android:text="Phone No"
+            android:textColor="#9796A1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/phoneNoBox"
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phoneNoText"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/rectangle_41"
+            android:hint="User's phone No from database/google"
+            android:textStyle="bold"
+            android:padding="16dp" />
+
+        <TextView
+            android:id="@+id/addressText"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/phoneNoBox"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="22dp"
+            android:gravity="top"
+            android:text="Address"
+            android:textColor="#9796A1"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/addressBox"
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressText"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/rectangle_41"
+            android:hint="User's address from database/google"
+            android:textStyle="bold"
+            android:padding="16dp" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/addressBox"
+            android:layout_centerHorizontal="true"
+            android:text="SAVE"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/sofia_pro_semibold"
+            android:textAlignment="center"
+            android:layout_marginTop="160dp"
+            />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

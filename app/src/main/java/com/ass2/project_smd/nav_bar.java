@@ -1,8 +1,6 @@
 package com.ass2.project_smd;
 
 
-import static androidx.core.text.SpannableStringBuilderKt.color;
-
 import static com.ass2.project_smd.R.*;
 
 import android.annotation.SuppressLint;
@@ -14,12 +12,10 @@ import android.os.Bundle;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,23 +25,24 @@ import com.ass2.Drawer.DrawerItem;
 import com.ass2.Drawer.SimpleItem;
 import com.ass2.Drawer.SpaceItem;
 import com.ass2.Helper.CartDBHelper;
+import com.ass2.NavBarFragments.AboutUsFragment;
+import com.ass2.NavBarFragments.DelivaryAddressFragment;
+import com.ass2.NavBarFragments.MyProfileFragment;
+import com.ass2.NavBarFragments.NearbyResFragment;
+import com.ass2.NavBarFragments.SettingsFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.squareup.picasso.Picasso;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener, DashboardFragment.DashboardListener {
 
@@ -69,6 +66,7 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
 
     ImageView drawerProfilePic;
     TextView drawerUserEmail, drawerUserName;
+    String profilePicURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +141,9 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
         else if(LOGIN_METHOD.equals("email") && isLogged){
             drawerUserName.setText(sharedPrefs.getString("name", ""));
             drawerUserEmail.setText(sharedPrefs.getString("email", ""));
+            profilePicURL = sharedPrefs.getString("image_url", "");
+            if(!profilePicURL.equals(""))
+                Picasso.get().load(profilePicURL).into(drawerProfilePic);
         }
 
 
@@ -211,8 +212,8 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
             transaction.replace(R.id.container, myProfileFragment);
         }
         else if(position == POS_DELIVERY_ADDRESS){
-            NearbyResFragment nearbyResFragment = new NearbyResFragment();
-            transaction.replace(R.id.container, nearbyResFragment);
+            DelivaryAddressFragment delivaryAddressFragment = new DelivaryAddressFragment();
+            transaction.replace(R.id.container, delivaryAddressFragment);
         }
         else if(position == POS_PAYMENT_METHODS){
             SettingsFragment settingsFragment = new SettingsFragment();
@@ -231,6 +232,16 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
             transaction.replace(R.id.container, settingsFragment);
         }
         else if(position == 8){//POS_LOGOUT
+            SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
+            String LOGIN_METHOD = sharedPrefs.getString("loginMethod", "");
+            if(LOGIN_METHOD.equals("google")){
+                gsc.signOut();
+            }
+            else if(LOGIN_METHOD.equals("email")){
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                editor.putBoolean("isLogged", false);
+                editor.apply();
+            }
             signOut();
         }
         slidingRootNav.closeMenu();
@@ -284,7 +295,15 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
         SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("loginMethod", signInMethod);
-        editor.putBoolean("isLogged", false);
+        if(signInMethod.equals("null")){
+            editor.putBoolean("isLogged", false);
+        }
+        else if(signInMethod.equals("google")){
+            editor.putString("GoogleIntent", "");
+        }
+        else if(signInMethod.equals("email")){
+            editor.putBoolean("isLogged", true);
+        }
         editor.apply();
 
         Intent intent = new Intent(this, welcome.class);

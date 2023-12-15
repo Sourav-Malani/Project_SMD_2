@@ -8,15 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ass2.Adapters.MainAdapter;
+import com.ass2.Fragments.StartersFragment;
 import com.ass2.Helper.CartDBHelper;
 import com.ass2.Models.MainModel;
 import com.ass2.project_smd.databinding.DashboardFragmentBinding;
@@ -27,11 +31,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Locale;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 public class DashboardFragment extends Fragment implements MainAdapter.CartUpdateListener  {
 
     private static final int RC_SIGN_IN = 123; // Use a unique request code
@@ -45,7 +53,9 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     View rectangle_floating_pizza;
+    RelativeLayout relativeLayoutFloating;
     private DashboardListener dashboardListener;
+    private String profilePicUrl;
     @Override
     public void onCartUpdated() {
         updateCartUI();
@@ -59,6 +69,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         CartDBHelper dbHelper = new CartDBHelper(getContext());
         double subtotal = dbHelper.calculateSubtotal();
         int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
+        if(itemCount == 0) {
+            relativeLayoutFloating.setVisibility(View.GONE);
+        } else {
+            relativeLayoutFloating.setVisibility(View.VISIBLE);
+        }
 
         floating_subtotal_text.setText(String.format(Locale.getDefault(), "£%.2f", subtotal));
         floating_count_text.setText(String.valueOf(itemCount));
@@ -80,6 +95,22 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         rectangle_floating_pizza = view.findViewById(R.id.rectangle_floating_pizza);
         floating_count_text = view.findViewById(R.id.floating_count_text);
         floating_subtotal_text = view.findViewById(R.id.floating_subtotal_text);
+        relativeLayoutFloating = view.findViewById(R.id.relativeLayoutFloating);
+        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        CartDBHelper dbHelper = new CartDBHelper(getContext());
+        double subtotal = dbHelper.calculateSubtotal();
+        int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
+        if(itemCount == 0) {
+            relativeLayoutFloating.setVisibility(View.GONE);
+        } else {
+            relativeLayoutFloating.setVisibility(View.VISIBLE);
+        }
 
         ImageView vectorImageView = view.findViewById(R.id.vectorImageView);
 
@@ -91,91 +122,92 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                 }
             }
         });
-        ArrayList<MainModel> list = new ArrayList<>();
-        list.add(new MainModel(
-                R.drawable.pizza_image,
-                "Create Your Own Pizza",
-                "$ 10",
-                "Choose From Our Options Of Designa And Make Your Own Pizza.",
-                "pizza",
-                1,
-                0));
-
-        list.add(new MainModel(
-                R.drawable.pizza2,
-                "Fresh Farm House",
-                "£14.25",
-                "crisp capsicum, succulent mushrooms and fresh tomatoes",
-                "pizza",
-                2,
-                1));
-        list.add(new MainModel(
-                R.drawable.pizza3,
-                "Peppy Paneer",
-                "£16.75",
-                "Chunky paneer with crisp capsicum and spicy red pepperr",
-                "pizza",
-                3,
-                1));
-        list.add(new MainModel(
-                R.drawable.pizza4,
-                "Mexican Green Wave",
-                "£20.00",
-                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-                "pizza",
-                4,
-                1));
-        list.add(new MainModel(
-                R.drawable.pizza5,
-                "Peppy Paneer",
-                "£16.75",
-                "Chunky paneer with crisp capsicum and spicy red pepper",
-                "pizza",
-                5,
-                1));
-        list.add(new MainModel(
-                R.drawable.pizza6,
-                "Mexican Green Wave",
-                "£20.00",
-                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-                "pizza",
-                6,
-                1));
-        list.add(new MainModel(
-                R.drawable.veg_extravaganz,
-                "Veg Extravaganza",
-                "£10.00",
-                "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
-                "pizza",
-                7,
-                1));
-        list.add(new MainModel(
-                R.drawable.margherita,
-                "Margherita",
-                "£16.00",
-                "A hugely popular margherita, with a deliciously tangy single cheese topping",
-                "pizza",
-                8,
-                1));
-        list.add(new MainModel(
-                R.drawable.veggie_paradise,
-                "Veggie Paradise",
-                "£14.75",
-                "oldern Corn, Black Olives, Capsicum & Red Paprika",
-                "pizza",
-                9,
-                1));
-
-        MainAdapter adapter = new MainAdapter(list, requireActivity(), this);
-        recyclerViewCards.setAdapter(adapter);
-
-        GridLayoutManager layoutManager = new GridLayoutManager(requireContext(), 2); // 2 columns
-        recyclerViewCards.setLayoutManager(layoutManager);
+//        ArrayList<MainModel> list = new ArrayList<>();
+//        list.add(new MainModel(
+//                R.drawable.pizza_image,
+//                "Create Your Own Pizza",
+//                "$ 10",
+//                "Choose From Our Options Of Designa And Make Your Own Pizza.",
+//                "pizza",
+//                1,
+//                0));
+//
+//        list.add(new MainModel(
+//                R.drawable.pizza2,
+//                "Fresh Farm House",
+//                "£14.25",
+//                "crisp capsicum, succulent mushrooms and fresh tomatoes",
+//                "pizza",
+//                2,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.pizza3,
+//                "Peppy Paneer",
+//                "£16.75",
+//                "Chunky paneer with crisp capsicum and spicy red pepperr",
+//                "pizza",
+//                3,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.pizza4,
+//                "Mexican Green Wave",
+//                "£20.00",
+//                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
+//                "pizza",
+//                4,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.pizza5,
+//                "Peppy Paneer",
+//                "£16.75",
+//                "Chunky paneer with crisp capsicum and spicy red pepper",
+//                "pizza",
+//                5,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.pizza6,
+//                "Mexican Green Wave",
+//                "£20.00",
+//                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
+//                "pizza",
+//                6,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.veg_extravaganz,
+//                "Veg Extravaganza",
+//                "£10.00",
+//                "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
+//                "pizza",
+//                7,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.margherita,
+//                "Margherita",
+//                "£16.00",
+//                "A hugely popular margherita, with a deliciously tangy single cheese topping",
+//                "pizza",
+//                8,
+//                1));
+//        list.add(new MainModel(
+//                R.drawable.veggie_paradise,
+//                "Veggie Paradise",
+//                "£14.75",
+//                "oldern Corn, Black Olives, Capsicum & Red Paprika",
+//                "pizza",
+//                9,
+//                1));
+//
+//        MainAdapter adapter = new MainAdapter(list, requireActivity(), this);
+//        recyclerViewCards.setAdapter(adapter);
+//
+//        GridLayoutManager layoutManager = new GridLayoutManager(requireContext(), 2); // 2 columns
+//        recyclerViewCards.setLayoutManager(layoutManager);
 
 
         SharedPreferences sharedPrefs = requireContext().getSharedPreferences("userPrefs", requireContext().MODE_PRIVATE);
         String loginMethod = sharedPrefs.getString("loginMethod", "");
         String addr = sharedPrefs.getString("delivery_address", "");
+        profilePicUrl = sharedPrefs.getString("image_url", "");
 
         if (loginMethod.equals("google")) {
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -188,6 +220,8 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         }
         else if(loginMethod.equals("email")){
             address.setText(addr);
+            if(!profilePicUrl.isEmpty())
+                Picasso.get().load(profilePicUrl).into(profilePic);
 
         }
         else {
@@ -201,6 +235,57 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
             }
         });
     }
+
+    private static class PagerAdapter extends FragmentPagerAdapter {
+        private static final int NUM_ITEMS = 4; // Number of tabs
+
+        public PagerAdapter(@NonNull FragmentManager fm) {
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new StartersFragment();
+                case 1:
+                    return new StartersFragment();//AsianFragment();
+                case 2:
+                    return new StartersFragment();//PlachaFragment();
+                case 3:
+                    return new StartersFragment();//ClassicFragment();
+                // Add more cases for additional tabs
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            // Set tab titles here
+            switch (position) {
+                case 0:
+                    return "Starters";
+                case 1:
+                    return "Asian";
+                case 2:
+                    return "Placha & Roasts & Grills";
+                case 3:
+                    return "Classic";
+                // Add more titles for additional tabs
+                default:
+                    return null;
+            }
+        }
+    }
+
     // Method to attach the listener to the fragment
     public void attachDashboardListener(DashboardListener listener) {
         this.dashboardListener = listener;
@@ -214,6 +299,7 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         // the GoogleSignInAccount will be non-null.
         SharedPreferences sharedPrefs = requireContext().getSharedPreferences("userPrefs", requireContext().MODE_PRIVATE);
         String loginMethod = sharedPrefs.getString("loginMethod", "");
+
 
         if(loginMethod.equals("google")){
             GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(requireContext());
