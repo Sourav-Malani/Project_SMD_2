@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".welcome"
+    tools:context="com.ass2.StarterScreens.welcome"
     android:background="@drawable/backgroud_welcome"
 
     >

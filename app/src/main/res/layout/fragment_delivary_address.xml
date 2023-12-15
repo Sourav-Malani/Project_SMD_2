@@ -49,8 +49,8 @@
 
         <TextView
             android:id="@+id/fullNameBox"
-            android:layout_width="367dp"
-            android:layout_height="wrap_content"
+            android:layout_width="366dp"
+            android:layout_height="55dp"
             android:layout_below="@+id/full_name"
             android:layout_marginTop="9dp"
             android:layout_marginLeft="27dp"
@@ -72,10 +72,10 @@
             android:textColor="#9796A1"
             android:textSize="16sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/phoneNoBox"
-            android:layout_width="367dp"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="55dp"
             android:layout_below="@+id/phoneNoText"
             android:layout_marginTop="9dp"
             android:layout_marginLeft="27dp"
@@ -99,8 +99,8 @@
 
         <EditText
             android:id="@+id/addressBox"
-            android:layout_width="367dp"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="70dp"
             android:layout_below="@+id/addressText"
             android:layout_marginTop="9dp"
             android:layout_marginLeft="27dp"
@@ -108,7 +108,8 @@
             android:background="@drawable/rectangle_41"
             android:hint="User's address from database/google"
             android:textStyle="bold"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textAlignment="viewStart"/>
 
         <Button
             android:id="@+id/saveButton"

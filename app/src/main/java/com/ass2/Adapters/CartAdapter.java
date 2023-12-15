@@ -1,26 +1,20 @@
 package com.ass2.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ass2.Helper.CartDBHelper;
 import com.ass2.Models.CartModel;
-import com.ass2.Models.MainModel;
 import com.ass2.project_smd.R;
-import com.ass2.project_smd.cart;
-import com.ass2.project_smd.create_your_own_pizza;
 
 import java.util.ArrayList;
 import java.util.Locale;

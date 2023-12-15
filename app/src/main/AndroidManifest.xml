@@ -36,53 +36,39 @@
         </activity>
 
         <activity
-            android:name=".create_your_own_step_2"
+            android:name="com.ass2.CreateYourOwnPizza.create_your_own_step_2"
             android:exported="false"
             android:label="@string/title_activity_create_your_own_step2"
             android:theme="@style/Theme.Project_SMD" />
         <activity
-            android:name=".create_your_own_pizza"
-            android:exported="false" />
-        <activity
-            android:name=".my_orders"
+            android:name="com.ass2.CreateYourOwnPizza.create_your_own_pizza"
             android:exported="false" />
         <activity
             android:name=".cart"
             android:exported="false" />
+
         <activity
-            android:name=".sidemenu"
+            android:name="com.ass2.StarterScreens.registration"
             android:exported="false" />
         <activity
-            android:name=".address"
+            android:name="com.ass2.StarterScreens.resetpassword"
             android:exported="false" />
         <activity
-            android:name=".profile"
+            android:name="com.ass2.StarterScreens.Verification"
             android:exported="false" />
         <activity
-            android:name=".registration"
-            android:exported="false" />
-        <activity
-            android:name=".resetpassword"
-            android:exported="false" />
-        <activity
-            android:name=".Verification"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
+            android:name="com.ass2.StarterScreens.Login"
             android:exported="false"
             android:theme="@style/Theme.Project_SMD.NoActionBar" />
 
         <activity
-            android:name=".signup"
+            android:name="com.ass2.StarterScreens.signup"
             android:exported="false" />
         <activity
-            android:name=".welcome"
+            android:name="com.ass2.StarterScreens.welcome"
             android:exported="false" />
         <activity
             android:name=".nav_bar"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

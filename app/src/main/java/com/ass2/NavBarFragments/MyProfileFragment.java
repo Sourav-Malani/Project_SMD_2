@@ -286,7 +286,6 @@ public class MyProfileFragment extends Fragment {
             editEmail.setText(account.getEmail());
             Picasso.get().load(account.getPhotoUrl().toString()).into(profileImage);
             phoneNo.setText("N/A");
-            account.notify();
         }
     }
 }

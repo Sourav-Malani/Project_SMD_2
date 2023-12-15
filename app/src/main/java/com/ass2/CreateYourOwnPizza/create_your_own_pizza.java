@@ -1,16 +1,16 @@
-package com.ass2.project_smd;
+package com.ass2.CreateYourOwnPizza;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ass2.project_smd.R;
 
 public class create_your_own_pizza extends AppCompatActivity {
 

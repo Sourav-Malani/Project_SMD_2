@@ -1,4 +1,4 @@
-package com.ass2.project_smd;
+package com.ass2.CreateYourOwnPizza;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.ass2.Helper.CartDBHelper;
 import com.ass2.Models.CartModel;
+import com.ass2.project_smd.R;
+import com.ass2.project_smd.nav_bar;
 
 import java.util.ArrayList;
 import java.util.Locale;

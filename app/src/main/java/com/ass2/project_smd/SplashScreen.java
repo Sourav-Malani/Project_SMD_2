@@ -1,19 +1,16 @@
 package com.ass2.project_smd;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ass2.Helper.User;
-import com.ass2.Helper.UserDatabaseHelper;
+import com.ass2.StarterScreens.welcome;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen  extends AppCompatActivity {
     //FirebaseAuth mAuth = FirebaseAuth.getInstance();

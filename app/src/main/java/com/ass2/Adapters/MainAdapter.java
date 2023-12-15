@@ -20,17 +20,12 @@ import com.ass2.Helper.CartDBHelper;
 import com.ass2.Helper.DBHelper;
 import com.ass2.Models.CartModel;
 import com.ass2.Models.MainModel;
-import com.ass2.project_smd.DashboardFragment;
 import com.ass2.project_smd.R;
-import com.ass2.project_smd.cart;
-import com.ass2.project_smd.create_your_own_pizza;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.ass2.CreateYourOwnPizza.create_your_own_pizza;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_LAYOUT_1 = 0;

@@ -66,7 +66,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:text="Jinnah Avenue, G-5"
+            android:text="Jinnah Avenue, G"
             android:textSize="18sp"
             android:textColor="#FE724C"
             android:fontFamily="@font/sofiapro_light"

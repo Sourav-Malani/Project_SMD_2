@@ -237,7 +237,7 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
     }
 
     private static class PagerAdapter extends FragmentPagerAdapter {
-        private static final int NUM_ITEMS = 4; // Number of tabs
+        private static final int NUM_ITEMS = 6; // Number of tabs
 
         public PagerAdapter(@NonNull FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -255,6 +255,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                     return new StartersFragment();//PlachaFragment();
                 case 3:
                     return new StartersFragment();//ClassicFragment();
+                case 4:
+                    return new StartersFragment();//ClassicFragment();
+                case 5:
+                    return new StartersFragment();//ClassicFragment();
+
                 // Add more cases for additional tabs
                 default:
                     return null;
@@ -279,6 +284,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                     return "Placha & Roasts & Grills";
                 case 3:
                     return "Classic";
+                case 4:
+                    return "Burgers";
+                case 5:
+                    return "Dessert";
+
                 // Add more titles for additional tabs
                 default:
                     return null;

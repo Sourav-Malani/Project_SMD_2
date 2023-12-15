@@ -1,4 +1,4 @@
-package com.ass2.project_smd;
+package com.ass2.StarterScreens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ass2.HttpService.ApiCallback;
-import com.ass2.HttpService.ApiHelper;
-import com.ass2.HttpService.HttpService;
-import com.ass2.HttpService.RetrofitBuilder;
-import com.ass2.HttpService.UserProfileModel;
-import com.ass2.Models.UserModel;
 import com.ass2.config.Config;
 import com.ass2.project_smd.R;
 
@@ -29,12 +23,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class signup extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.ass2.project_smd;
+package com.ass2.StarterScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.ass2.HttpService.ApiCallback;
-import com.ass2.HttpService.ApiHelper;
-import com.ass2.HttpService.HttpService;
-import com.ass2.HttpService.RetrofitBuilder;
-import com.ass2.HttpService.UserProfileModel;
+
 import com.ass2.config.Config;
 import com.ass2.project_smd.R;
 import com.ass2.project_smd.nav_bar;
@@ -113,11 +109,13 @@ public class Login extends AppCompatActivity {
             public void run() {
                 try {
                     //URL url = new URL("http://192.168.18.114/Ass02API/login.php"); // Use your IP and path
+
                     URL url = new URL(Config.API_BASE_URL + "login.php");
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
+
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
@@ -148,12 +146,20 @@ public class Login extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                displayError("Login failed");
+                                displayError(responseCode + " Failed");
                             }
                         });
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //If server is not up.
+                            displayError("Server is not up"+e.getMessage());
+
+                        }
+                    });
                 }
             }
         }).start();
@@ -167,7 +173,8 @@ public class Login extends AppCompatActivity {
                 // Store user data in SharedPreferences
                 setSharedPreference(jsonResponse);
                 navigateToHome();
-            } else {
+            }
+            else if("error".equals(status)){
                 String message = jsonResponse.getString("message");
                 displayError(message);
             }
@@ -182,8 +189,6 @@ public class Login extends AppCompatActivity {
         SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("loginMethod", "email");
-        editor.putString("name", userData.optString("name"));
-        editor.putString("email", userData.optString("email"));
 
 
 

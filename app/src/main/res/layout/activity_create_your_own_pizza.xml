@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".create_your_own_pizza"
+    tools:context="com.ass2.CreateYourOwnPizza.create_your_own_pizza"
     android:background="#F9F7F4"
     >
     <ImageView
