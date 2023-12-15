@@ -20,10 +20,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ass2.Adapters.MainAdapter;
+import com.ass2.Fragments.AsianFragment;
 import com.ass2.Fragments.StartersFragment;
 import com.ass2.Helper.CartDBHelper;
 import com.ass2.Models.MainModel;
-import com.ass2.project_smd.databinding.DashboardFragmentBinding;
+import com.ass2.project_smd.databinding.FragmentDashboardBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -45,43 +46,43 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
     private static final int RC_SIGN_IN = 123; // Use a unique request code
     private static final String TAG = "SignInActivity";
 
-    DashboardFragmentBinding binding;
+    FragmentDashboardBinding binding;
     RecyclerView recyclerViewCards;
     TextView address;
     ImageView profilePic;
-    TextView floating_count_text,floating_subtotal_text;
+    //TextView floating_count_text,floating_subtotal_text;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
-    View rectangle_floating_pizza;
-    RelativeLayout relativeLayoutFloating;
+    //View rectangle_floating_pizza;
+    //RelativeLayout relativeLayoutFloating;
     private DashboardListener dashboardListener;
     private String profilePicUrl;
     @Override
     public void onCartUpdated() {
-        updateCartUI();
+        //updateCartUI();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DashboardFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentDashboardBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
-    public void updateCartUI() {
-        CartDBHelper dbHelper = new CartDBHelper(getContext());
-        double subtotal = dbHelper.calculateSubtotal();
-        int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
-        if(itemCount == 0) {
-            relativeLayoutFloating.setVisibility(View.GONE);
-        } else {
-            relativeLayoutFloating.setVisibility(View.VISIBLE);
-        }
-
-        floating_subtotal_text.setText(String.format(Locale.getDefault(), "£%.2f", subtotal));
-        floating_count_text.setText(String.valueOf(itemCount));
-    }
+//    public void updateCartUI() {
+//        CartDBHelper dbHelper = new CartDBHelper(getContext());
+//        double subtotal = dbHelper.calculateSubtotal();
+//        int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
+//        if(itemCount == 0) {
+//            relativeLayoutFloating.setVisibility(View.GONE);
+//        } else {
+//            relativeLayoutFloating.setVisibility(View.VISIBLE);
+//        }
+//
+//        floating_subtotal_text.setText(String.format(Locale.getDefault(), "£%.2f", subtotal));
+//        floating_count_text.setText(String.valueOf(itemCount));
+//    }
     @Override
     public void onResume() {
         super.onResume();
-        updateCartUI(); // Call your method to update UI
+        //updateCartUI(); // Call your method to update UI
     }
 
 
@@ -92,10 +93,10 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         recyclerViewCards = view.findViewById(R.id.recyclerViewCards);
         address = view.findViewById(R.id.address);
         profilePic = view.findViewById(R.id.profile_image);
-        rectangle_floating_pizza = view.findViewById(R.id.rectangle_floating_pizza);
-        floating_count_text = view.findViewById(R.id.floating_count_text);
-        floating_subtotal_text = view.findViewById(R.id.floating_subtotal_text);
-        relativeLayoutFloating = view.findViewById(R.id.relativeLayoutFloating);
+        //rectangle_floating_pizza = view.findViewById(R.id.rectangle_floating_pizza);
+        //floating_count_text = view.findViewById(R.id.floating_count_text);
+        //floating_subtotal_text = view.findViewById(R.id.floating_subtotal_text);
+        //relativeLayoutFloating = view.findViewById(R.id.relativeLayoutFloating);
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         ViewPager viewPager = view.findViewById(R.id.viewPager);
 
@@ -103,14 +104,13 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        CartDBHelper dbHelper = new CartDBHelper(getContext());
-        double subtotal = dbHelper.calculateSubtotal();
-        int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
-        if(itemCount == 0) {
-            relativeLayoutFloating.setVisibility(View.GONE);
-        } else {
-            relativeLayoutFloating.setVisibility(View.VISIBLE);
-        }
+//        CartDBHelper dbHelper = new CartDBHelper(getContext());
+//        int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
+//        if(itemCount == 0) {
+//            relativeLayoutFloating.setVisibility(View.GONE);
+//        } else {
+//            relativeLayoutFloating.setVisibility(View.VISIBLE);
+//        }
 
         ImageView vectorImageView = view.findViewById(R.id.vectorImageView);
 
@@ -227,13 +227,13 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         else {
             address.setText("Please Login");
         }
-        rectangle_floating_pizza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), cart.class);
-                startActivity(intent);
-            }
-        });
+//        rectangle_floating_pizza.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(requireContext(), cart.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private static class PagerAdapter extends FragmentPagerAdapter {
@@ -250,7 +250,7 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                 case 0:
                     return new StartersFragment();
                 case 1:
-                    return new StartersFragment();//AsianFragment();
+                    return new AsianFragment();//AsianFragment();
                 case 2:
                     return new StartersFragment();//PlachaFragment();
                 case 3:

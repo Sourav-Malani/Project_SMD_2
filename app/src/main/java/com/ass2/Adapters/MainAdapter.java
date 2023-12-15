@@ -53,7 +53,8 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return (position == 0) ? VIEW_TYPE_LAYOUT_1 : VIEW_TYPE_LAYOUT_2;
+        final MainModel model = list.get(position);
+        return model.getViewType();
     }
     public interface CartUpdateListener {
         void onCartUpdated();
