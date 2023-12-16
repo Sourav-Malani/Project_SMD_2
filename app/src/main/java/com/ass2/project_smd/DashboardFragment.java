@@ -220,8 +220,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         }
         else if(loginMethod.equals("email")){
             address.setText(addr);
-            if(!profilePicUrl.isEmpty())
-                Picasso.get().load(profilePicUrl).into(profilePic);
+            if (!profilePicUrl.isEmpty()) {
+                String fullPath = "file://" + profilePicUrl;
+                Picasso.get().load(fullPath).into(profilePic);
+            }
+
 
         }
         else {
