@@ -88,6 +88,10 @@ public class welcome extends AppCompatActivity {
         SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("loginMethod", signInMethod);
+        if(signInMethod.equals("google")){
+            editor.putString("email", GoogleSignIn.getLastSignedInAccount(this).getEmail());
+            editor.putString("name", GoogleSignIn.getLastSignedInAccount(this).getDisplayName());
+        }
         editor.apply();
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

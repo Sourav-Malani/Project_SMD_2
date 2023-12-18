@@ -8,13 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.ass2.Models.CartModel;
+import com.ass2.config.LocalDBVersion;
 
 import java.util.ArrayList;
 
 public class CartDBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "cheesybites.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "cheesybitesCart.db";
+    private static final int DATABASE_VERSION = LocalDBVersion.DB_VERSION;
 
     // Table name
     public static final String TABLE_CART = "cart";
@@ -64,6 +65,7 @@ public class CartDBHelper extends SQLiteOpenHelper {
                 + COLUMN_DATE + " TEXT"
                 + ")";
         db.execSQL(CREATE_CART_TABLE);
+        Log.d("DBDebug", "Cart table created: " + CREATE_CART_TABLE);
     }
 
 
@@ -100,7 +102,6 @@ public class CartDBHelper extends SQLiteOpenHelper {
 
             while (cursor.moveToNext()) {
                 CartModel cartModel = new CartModel();
-
                 if (columnIndexItemType != -1) {
                     cartModel.setViewType(cursor.getInt(columnIndexItemType));
                 }
@@ -363,10 +364,10 @@ public class CartDBHelper extends SQLiteOpenHelper {
     }
     public void clearCart() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CART, null, null);
+        db.delete(TABLE_CART, null, null); // This will delete all records in the 'cart' table
         db.close();
-
     }
+
 
 
 }

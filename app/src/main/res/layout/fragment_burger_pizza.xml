@@ -1,0 +1,95 @@
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#F5F3EF"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBurgerPizza"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="100dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rectangle_floating_pizza_burger_pizza"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="-170dp"
+            android:layout_gravity="right"
+
+
+            >
+            <View
+                android:id="@+id/rectangle_floating_pizza"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/floating_pizza_box"
+                android:elevation="13dp"
+                android:alpha="0.9"
+                />
+            <TextView
+                android:id="@+id/floating_subtotal_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="£ 0"
+                android:textColor="@color/white"
+                android:lineSpacingExtra="-6sp"
+                android:textAppearance="@style/some_id"
+                android:gravity="center_horizontal|center_vertical"
+                android:elevation="13dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                />
+            <View
+                android:id="@+id/ellipse_62"
+                android:layout_width="41dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ellipse_62"
+                android:elevation="14dp"
+                android:layout_marginLeft="96dp"
+                android:layout_marginTop="-8dp"
+                />
+            <TextView
+                android:id="@+id/floating_count_text"
+                android:layout_width="8dp"
+                android:layout_height="15dp"
+                android:elevation="14dp"
+                android:layout_alignParentTop="true"
+
+                android:layout_marginTop="-2dp"
+                android:layout_marginLeft="104sp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="8sp"
+                android:lineSpacingExtra="-1sp"
+                android:gravity="center_horizontal|center_vertical"
+                />
+            <View
+                android:id="@+id/ellipse_61"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/ellipse_61"
+                android:elevation="14dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
+                />
+            <ImageView
+                android:id="@+id/pizza_image_floating"
+                android:src="@drawable/floating_pizza"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/pizza"
+                android:elevation="14dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>

@@ -54,7 +54,27 @@ public class CartModel {
         this.itemImage = itemImage;
         this.viewType = viewType;
     }
+    @Override
+    public String toString() {
+        return "CartModel{" +
+                "itemName='" + itemName + '\'' +
+                ", itemPrice='" + itemPrice + '\'' +
+                ", itemCount=" + itemCount +
+                ", itemImage=" + itemImage +
+                ", viewType=" + viewType +
+                ", date='" + date + '\'' +
+                ", itemCrust='" + itemCrust + '\'' +
+                ", itemToppings='" + itemToppings + '\'' +
+                ", itemSize=" + itemSize +
+                ", selectedSauceLeft='" + selectedSauceLeft + '\'' +
+                ", selectedSauceRight='" + selectedSauceRight + '\'' +
+                ", selectedToppingsLeft=" + selectedToppingsLeft +
+                ", selectedToppingsRight=" + selectedToppingsRight +
 
+
+                // Add other fields that you want to include in the string representation
+                '}';
+    }
 //    public int getId() {
 //        return id;
 //    }

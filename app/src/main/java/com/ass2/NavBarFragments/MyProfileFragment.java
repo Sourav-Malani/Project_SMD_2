@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,7 @@ public class MyProfileFragment extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("SignInActivity", "Profile Picture URL: " + profilePhotoUrl);
                 Intent intent = new Intent(requireActivity(), nav_bar.class);
                 startActivity(intent);
             }
@@ -99,7 +101,7 @@ public class MyProfileFragment extends Fragment {
 
         if (isLogged && loginMethod.equals("email")) {
             email = sharedPrefs.getString("email", "");
-            profilePhotoUrl = sharedPrefs.getString("image_url", "");
+            //profilePhotoUrl = sharedPrefs.getString("image_url", "");
             fetchAndDisplayUserData(email);
         } else if (isLogged && loginMethod.equals("google")) {
             GoogleSignInAccount recievedAccount = GoogleSignIn.getLastSignedInAccount(requireActivity());
@@ -118,7 +120,7 @@ public class MyProfileFragment extends Fragment {
                  if (requestCode == PROFILE_PHOTO_REQUEST_CODE) {
                      profileImage.setImageURI(selectedImageUri);
                      profilePhotoUrl = FileUtils.getPath(getContext(), selectedImageUri);
-                    saveImageUrlsToSharedPreferences();
+                    //saveImageUrlsToSharedPreferences();
                     // Upload the profile photo
                     uploadFileToServer(profilePhotoUrl);
                 }
@@ -126,10 +128,10 @@ public class MyProfileFragment extends Fragment {
         }
     }
 
-    private void saveImageUrlsToSharedPreferences() {
+    private void saveImageUrlsToSharedPreferences(String imgURL) {
         SharedPreferences sharedPrefs = requireActivity().getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString("image_url", profilePhotoUrl);
+        editor.putString("image_url", imgURL);
         editor.apply();
     }
 
@@ -152,7 +154,17 @@ public class MyProfileFragment extends Fragment {
             public void onResponse(Call<UserProfileModel> call, retrofit2.Response<UserProfileModel> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     UserProfileModel fileModel = response.body();
-                    Toast.makeText(getContext(), fileModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), fileModel.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), fileModel.getImageURL(), Toast.LENGTH_SHORT).show();
+                    String imgURL = fileModel.getImageURL();
+                    // Update the profilePhotoUrl in SharedPreferences after uploading
+                    //profilePhotoUrl = response.body().imageUrl; // Assuming your UserProfileModel contains the new image URL
+
+                    // Save the updated URL in SharedPreferences
+                    saveImageUrlsToSharedPreferences(imgURL);
+
+//                    UserProfileModel fileModel = response.body();
+//                    Toast.makeText(getContext(), fileModel.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     // Handle the case where the response body is null
                     Toast.makeText(getContext(), "Response is not successful or is empty", Toast.LENGTH_SHORT).show();
@@ -261,6 +273,12 @@ public class MyProfileFragment extends Fragment {
             phoneNo.setText(userData.getString("phone_no"));
             if (userData.has("image_url")) {
                 profilePhotoUrl = userData.getString("image_url");
+
+                SharedPreferences sharedPrefs = requireActivity().getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                editor.putString("image_url", profilePhotoUrl);
+                Log.d("SignInActivity", "Profile Picture URL: " + profilePhotoUrl);
+                editor.apply();
                 Picasso.get()
                         .load(profilePhotoUrl)
                         .rotate(90) // Adjust the rotation angle as needed

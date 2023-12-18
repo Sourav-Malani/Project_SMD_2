@@ -130,6 +130,12 @@ public class Login extends AppCompatActivity {
                         StringBuffer sb = new StringBuffer("");
                         String line;
 
+                        SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPrefs.edit();
+                        editor.putString("password", password);
+                        editor.putString("email", email);
+                        editor.apply();
+
                         while ((line = in.readLine()) != null) {
                             sb.append(line);
                             break;
@@ -247,7 +253,8 @@ public class Login extends AppCompatActivity {
         editor.putString("loginMethod", "email");
         editor.putString("name", sharedPrefs.getString("name", ""));
         editor.putString("email", sharedPrefs.getString("email", ""));
-        editor.putString("profilePhotoUrl", sharedPrefs.getString("profilePhotoUrl", ""));
+
+
 
 
 

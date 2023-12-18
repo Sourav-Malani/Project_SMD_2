@@ -358,5 +358,46 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemCount() {
         return list.size();
     }
+    public String getOrderSummary() {
+        StringBuilder summaryBuilder = new StringBuilder();
+        for (CartModel item : list) {
+            summaryBuilder.append(item.getItemName())
+                    .append(" - Qty: ")
+                    .append(item.getItemCount())
+                    .append(", Price: £")
+                    .append(String.format(Locale.getDefault(), "%.2f", Double.parseDouble(item.getItemPrice())))
+                    .append("\n");
+        }
+        return summaryBuilder.toString();
+    }
+    private String formatOrderDetails(ArrayList<CartModel> cartItems) {
+        StringBuilder orderDetails = new StringBuilder();
+
+        for (CartModel item : cartItems) {
+            orderDetails.append("Item Name: ").append(item.getItemName())
+                    .append(", Quantity: ").append(item.getItemCount())
+                    .append(", Price: ").append(item.getItemPrice())
+                    .append("\n");
+
+            // Include additional details as needed
+            // For example, if it's a pizza, include size, crust, toppings, etc.
+            if (item.getViewType() == VIEW_TYPE_LAYOUT_1 || item.getViewType() == VIEW_TYPE_LAYOUT_2) {
+                orderDetails.append("Size: ").append(item.getItemSize())
+                        .append(", Crust: ").append(item.getItemCrust())
+                        .append(", Left Sauce: ").append(item.getSelectedSauceLeft())
+                        .append(", Right Sauce: ").append(item.getSelectedSauceRight())
+                        .append(", Left Toppings: ").append(item.getSelectedToppingsLeft().toString())
+                        .append(", Right Toppings: ").append(item.getSelectedToppingsRight().toString())
+                        .append("\n");
+            }
+
+            // You can continue adding more details based on the properties of CartModel
+            // ...
+
+            orderDetails.append("\n"); // Separate each item by a new line for clarity
+        }
+
+        return orderDetails.toString();
+    }
 
 }

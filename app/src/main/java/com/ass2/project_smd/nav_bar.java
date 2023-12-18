@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ass2.Adapters.MyOrdersAdapter;
 import com.ass2.Drawer.DrawerAdapter;
 import com.ass2.Drawer.DrawerItem;
 import com.ass2.Drawer.SimpleItem;
@@ -27,6 +28,7 @@ import com.ass2.Drawer.SpaceItem;
 import com.ass2.Helper.CartDBHelper;
 import com.ass2.NavBarFragments.AboutUsFragment;
 import com.ass2.NavBarFragments.DelivaryAddressFragment;
+import com.ass2.NavBarFragments.MyOrdersFragment;
 import com.ass2.NavBarFragments.MyProfileFragment;
 import com.ass2.NavBarFragments.SettingsFragment;
 import com.ass2.StarterScreens.welcome;
@@ -46,14 +48,14 @@ import android.widget.TextView;
 
 public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener, DashboardFragment.DashboardListener {
 
-    private static final int POS_MY_ORDERS = 0;
+    private static final int POS_DASHBOARD = 0;
     private static final int POS_MY_PROFILE = 1;
     private static final int POS_DELIVERY_ADDRESS = 2;
-    private static final int POS_PAYMENT_METHODS = 3;
-    private static final int POS_CONTACT_US= 4;
-    private static final int POS_SETTINGS = 5;
-    private static final int POS_HELP = 6;
-    private static final int POS_LOGOUT = 7;
+    private static final int POS_MY_ORDERS = 3;
+//    private static final int POS_CONTACT_US= 4;
+//    private static final int POS_SETTINGS = 5;
+//    private static final int POS_HELP = 6;
+    private static final int POS_LOGOUT = 4;
 
 
     private String[] screenTitles;
@@ -78,6 +80,7 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
         //user_email = findViewById(R.id.user_email);
         //ImageView vectorImageView = view.findViewById(R.id.vectorImageView);
 
+
         Toolbar toolbar = findViewById(id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -95,13 +98,10 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
         screenTitles = loadScreenTitles();
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
-                createItemFor(POS_MY_ORDERS).setChecked(true),
+                createItemFor(POS_DASHBOARD).setChecked(true),
                 createItemFor(POS_MY_PROFILE),
                 createItemFor(POS_DELIVERY_ADDRESS),
-                createItemFor(POS_PAYMENT_METHODS),
-                createItemFor(POS_CONTACT_US),
-                createItemFor(POS_SETTINGS),
-                createItemFor(POS_HELP),
+                createItemFor(POS_MY_ORDERS),
                 new SpaceItem(48),
                 createItemForLogout(POS_LOGOUT)));
         adapter.setListener(this);
@@ -114,9 +114,15 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
+        if (getIntent().getStringExtra("openFragment") != null &&
+                getIntent().getStringExtra("openFragment").equals("MyOrdersFragment")) {
+            adapter.setSelected(POS_MY_ORDERS);
 
-        adapter.setSelected(POS_MY_ORDERS);
+        }
+        else{
+            adapter.setSelected(POS_DASHBOARD);
 
+        }
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -203,35 +209,42 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
 
 
         // Set the listener for DashboardFragment
-        if(position == POS_MY_ORDERS){
+        if(position == POS_DASHBOARD){
             dashboardFragment.attachDashboardListener(this);
             transaction.replace(R.id.container, dashboardFragment);
+            transaction.addToBackStack(null);
+
         }
         else if(position == POS_MY_PROFILE){
             MyProfileFragment myProfileFragment = new MyProfileFragment();
             transaction.replace(R.id.container, myProfileFragment);
+            transaction.addToBackStack(null);
+
         }
         else if(position == POS_DELIVERY_ADDRESS){
             DelivaryAddressFragment delivaryAddressFragment = new DelivaryAddressFragment();
             transaction.replace(R.id.container, delivaryAddressFragment);
+            transaction.addToBackStack(null);
+
         }
-        else if(position == POS_PAYMENT_METHODS){
-            SettingsFragment settingsFragment = new SettingsFragment();
-            transaction.replace(R.id.container, settingsFragment);
+        else if(position == POS_MY_ORDERS){
+            MyOrdersFragment myOrdersFragment = new MyOrdersFragment();
+            transaction.replace(R.id.container, myOrdersFragment);
+            transaction.addToBackStack(null);
         }
-        else if(position == POS_CONTACT_US){
-            AboutUsFragment aboutUsFragment = new AboutUsFragment();
-            transaction.replace(R.id.container, aboutUsFragment);
-        }
-        else if(position == POS_SETTINGS){
-            SettingsFragment settingsFragment = new SettingsFragment();
-            transaction.replace(R.id.container, settingsFragment);
-        }
-        else if(position == POS_HELP){
-            SettingsFragment settingsFragment = new SettingsFragment();
-            transaction.replace(R.id.container, settingsFragment);
-        }
-        else if(position == 8){//POS_LOGOUT
+//        else if(position == POS_CONTACT_US){
+//            AboutUsFragment aboutUsFragment = new AboutUsFragment();
+//            transaction.replace(R.id.container, aboutUsFragment);
+//        }
+//        else if(position == POS_SETTINGS){
+//            SettingsFragment settingsFragment = new SettingsFragment();
+//            transaction.replace(R.id.container, settingsFragment);
+//        }
+//        else if(position == POS_HELP){
+//            SettingsFragment settingsFragment = new SettingsFragment();
+//            transaction.replace(R.id.container, settingsFragment);
+//        }
+        else if(position == POS_LOGOUT+1){//POS_LOGOUT
             SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
             String LOGIN_METHOD = sharedPrefs.getString("loginMethod", "");
             if(LOGIN_METHOD.equals("google")){
@@ -286,6 +299,7 @@ public class nav_bar extends AppCompatActivity implements DrawerAdapter.OnItemSe
     private void signOut() {
         // Clear cart data
         CartDBHelper dbHelper = new CartDBHelper(this);
+
         dbHelper.clearCart();
         nagivateToSignInActivity("null");
 

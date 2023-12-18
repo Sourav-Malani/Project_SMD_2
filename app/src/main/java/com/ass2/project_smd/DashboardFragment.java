@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,14 +15,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ass2.Adapters.MainAdapter;
-import com.ass2.Fragments.AsianFragment;
+import com.ass2.Fragments.BeveragesFragment;
+import com.ass2.Fragments.BurgerPizzaFragment;
+import com.ass2.Fragments.SidesFragment;
 import com.ass2.Fragments.StartersFragment;
-import com.ass2.Helper.CartDBHelper;
-import com.ass2.Models.MainModel;
 import com.ass2.project_smd.databinding.FragmentDashboardBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -33,12 +31,9 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Locale;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class DashboardFragment extends Fragment implements MainAdapter.CartUpdateListener  {
@@ -122,92 +117,17 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                 }
             }
         });
-//        ArrayList<MainModel> list = new ArrayList<>();
-//        list.add(new MainModel(
-//                R.drawable.pizza_image,
-//                "Create Your Own Pizza",
-//                "$ 10",
-//                "Choose From Our Options Of Designa And Make Your Own Pizza.",
-//                "pizza",
-//                1,
-//                0));
-//
-//        list.add(new MainModel(
-//                R.drawable.pizza2,
-//                "Fresh Farm House",
-//                "£14.25",
-//                "crisp capsicum, succulent mushrooms and fresh tomatoes",
-//                "pizza",
-//                2,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.pizza3,
-//                "Peppy Paneer",
-//                "£16.75",
-//                "Chunky paneer with crisp capsicum and spicy red pepperr",
-//                "pizza",
-//                3,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.pizza4,
-//                "Mexican Green Wave",
-//                "£20.00",
-//                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-//                "pizza",
-//                4,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.pizza5,
-//                "Peppy Paneer",
-//                "£16.75",
-//                "Chunky paneer with crisp capsicum and spicy red pepper",
-//                "pizza",
-//                5,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.pizza6,
-//                "Mexican Green Wave",
-//                "£20.00",
-//                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-//                "pizza",
-//                6,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.veg_extravaganz,
-//                "Veg Extravaganza",
-//                "£10.00",
-//                "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
-//                "pizza",
-//                7,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.margherita,
-//                "Margherita",
-//                "£16.00",
-//                "A hugely popular margherita, with a deliciously tangy single cheese topping",
-//                "pizza",
-//                8,
-//                1));
-//        list.add(new MainModel(
-//                R.drawable.veggie_paradise,
-//                "Veggie Paradise",
-//                "£14.75",
-//                "oldern Corn, Black Olives, Capsicum & Red Paprika",
-//                "pizza",
-//                9,
-//                1));
-//
-//        MainAdapter adapter = new MainAdapter(list, requireActivity(), this);
-//        recyclerViewCards.setAdapter(adapter);
-//
-//        GridLayoutManager layoutManager = new GridLayoutManager(requireContext(), 2); // 2 columns
-//        recyclerViewCards.setLayoutManager(layoutManager);
 
 
         SharedPreferences sharedPrefs = requireContext().getSharedPreferences("userPrefs", requireContext().MODE_PRIVATE);
         String loginMethod = sharedPrefs.getString("loginMethod", "");
         String addr = sharedPrefs.getString("delivery_address", "");
-        profilePicUrl = sharedPrefs.getString("image_url", "");
+        if(sharedPrefs.getString("image_url", "") != null){
+            profilePicUrl = sharedPrefs.getString("image_url", "");
+        }
+        else{
+            profilePicUrl = "";
+        }
 
         if (loginMethod.equals("google")) {
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -221,8 +141,28 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
         else if(loginMethod.equals("email")){
             address.setText(addr);
             if (!profilePicUrl.isEmpty()) {
-                String fullPath = "file://" + profilePicUrl;
-                Picasso.get().load(fullPath).into(profilePic);
+                //String fullPath = "file://" + profilePicUrl;
+//                Picasso.get()
+//                        .load(profilePicUrl)
+//                        .error(R.drawable.google)
+//                        .into(profilePic);
+
+                Log.d(TAG, "Profile Picture URL: " + profilePicUrl);
+                Picasso.get()
+                        .load(profilePicUrl)
+                        .error(R.drawable.google)
+                        .into(profilePic, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                Log.d(TAG, "Image loaded successfully");
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Log.e(TAG, "Error loading image: " + e.getMessage());
+                            }
+                        });
+
             }
 
 
@@ -240,7 +180,7 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
     }
 
     private static class PagerAdapter extends FragmentPagerAdapter {
-        private static final int NUM_ITEMS = 6; // Number of tabs
+        private static final int NUM_ITEMS = 4; // Number of tabs
 
         public PagerAdapter(@NonNull FragmentManager fm) {
             super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -253,15 +193,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                 case 0:
                     return new StartersFragment();
                 case 1:
-                    return new AsianFragment();//AsianFragment();
+                    return new SidesFragment();
                 case 2:
-                    return new StartersFragment();//PlachaFragment();
+                    return new BurgerPizzaFragment();
                 case 3:
-                    return new StartersFragment();//ClassicFragment();
-                case 4:
-                    return new StartersFragment();//ClassicFragment();
-                case 5:
-                    return new StartersFragment();//ClassicFragment();
+                    return new BeveragesFragment();
 
                 // Add more cases for additional tabs
                 default:
@@ -282,15 +218,11 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
                 case 0:
                     return "Starters";
                 case 1:
-                    return "Asian";
+                    return "Sides";
                 case 2:
-                    return "Placha & Roasts & Grills";
+                    return "Burger Pizza";
                 case 3:
-                    return "Classic";
-                case 4:
-                    return "Burgers";
-                case 5:
-                    return "Dessert";
+                    return "Beverages";
 
                 // Add more titles for additional tabs
                 default:
@@ -373,7 +305,26 @@ public class DashboardFragment extends Fragment implements MainAdapter.CartUpdat
 
                 // Load the image using an image loading library like Picasso or Glide
                 // For example, using Picasso:
-                Picasso.get().load(photoUrl).into(profilePic);
+//                Picasso.get()
+//                        .load(photoUrl)
+//                        .error(R.drawable.google)
+//                        .into(profilePic);
+
+                Log.d(TAG, "Profile Picture URL: " + profilePicUrl);
+                Picasso.get()
+                        .load(photoUrl)
+                        .error(R.drawable.google)
+                        .into(profilePic, new Callback() {
+                            @Override
+                            public void onSuccess() {
+                                Log.d(TAG, "Image loaded successfully");
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Log.e(TAG, "Error loading image: " + e.getMessage());
+                            }
+                        });
 
                 // If you want to download and display the image manually, you can use:
                 /* new DownloadImageTask(yourImageView).execute(photoUrl); */

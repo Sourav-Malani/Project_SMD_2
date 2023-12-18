@@ -25,7 +25,7 @@ import com.ass2.project_smd.cart;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class AsianFragment extends Fragment implements MainAdapter.CartUpdateListener {
+public class SidesFragment extends Fragment implements MainAdapter.CartUpdateListener {
 
     private RecyclerView recyclerView;
     private MainAdapter adapter;
@@ -62,7 +62,7 @@ public class AsianFragment extends Fragment implements MainAdapter.CartUpdateLis
         rectangle_floating_pizza = rootView.findViewById(R.id.rectangle_floating_pizza);
         floating_count_text = rootView.findViewById(R.id.floating_count_text);
         floating_subtotal_text = rootView.findViewById(R.id.floating_subtotal_text);
-        relativeLayoutFloating = rootView.findViewById(R.id.rectangle_floating_pizza_starters);
+        relativeLayoutFloating = rootView.findViewById(R.id.rectangle_floating_pizza_asian);
 
         CartDBHelper dbHelper = new CartDBHelper(getContext());
         int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper
@@ -80,67 +80,67 @@ public class AsianFragment extends Fragment implements MainAdapter.CartUpdateLis
         // Populate startersList with your starters data
 
         asianList.add(new MainModel(
-                R.drawable.profile_image,
-                "Asian",
-                "£14.25",
-                "crisp capsicum, succulent mushrooms and fresh tomatoes",
-                "pizza",
+                R.drawable.garlic_bread,
+                "Garlic Breadstics",
+                "£4.25",
+                "The endearing tang of garlic in breadstics baked to perfection",
+                "sides",
                 1,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "AsianTwo",
-                "£16.75",
-                "Chunky paneer with crisp capsicum and spicy red pepperr",
-                "pizza",
+                R.drawable.stuffed_garlic_breadstick,
+                "Stuffed Garlic Bread",
+                "£2.75",
+                "Freshly Baked Garlic Bread stuffed with mozzarella cheese, sweet corns & tangy and spicy jalapeños",
+                "sides",
                 3,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Mexican Green Wave",
-                "£20.00",
-                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-                "pizza",
+                R.drawable.butter_scotch_mousse_cake,
+                "Butterscotch Cake",
+                "£6.00",
+                "A Creamy & Chocolaty indulgence with layers of rich, fluffy Butterscotch Cream & Chocolate Cake",
+                "sides",
                 4,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Peppy Paneer",
-                "£16.75",
-                "Chunky paneer with crisp capsicum and spicy red pepper",
-                "pizza",
+                R.drawable.crynchy_strips,
+                "Crunchy Strips",
+                "£3.75",
+                "Oven baked wheat thin crips with peri peri seasoning with a cheesy dip",
+                "sides",
                 5,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Mexican Green Wave",
-                "£20.00",
-                "A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes",
-                "pizza",
+                R.drawable.taco_mexicana_veg,
+                "Taco Mexican Veg",
+                "£2.5",
+                "Oven baked wheat thin crips with peri peri seasoning with a cheesy dip",
+                "sides",
                 6,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Veg Extravaganza",
-                "£10.00",
-                "Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese",
-                "pizza",
+                R.drawable.red_velvet_lava_cake,
+                "RED VELVET LAVA CAKE",
+                "£5.00",
+                "A truly indulgent experience with sweet and rich red velvet cake",
+                "sides",
                 7,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Margherita",
+                R.drawable.lava_cake,
+                "Lava Cake",
                 "£16.00",
                 "A hugely popular margherita, with a deliciously tangy single cheese topping",
-                "pizza",
+                "sides",
                 8,
                 1));
         asianList.add(new MainModel(
-                R.drawable.pizza_image,
-                "Veggie Paradise",
-                "£14.75",
-                "oldern Corn, Black Olives, Capsicum & Red Paprika",
-                "pizza",
+                R.drawable.cheese_dip,
+                "Cheese Dip",
+                "£1.00",
+                "A hugely popular margherita, with a deliciously tangy single cheese topping",
+                "sides",
                 9,
                 1));
 

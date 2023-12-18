@@ -63,7 +63,7 @@ public class StartersFragment extends Fragment implements MainAdapter.CartUpdate
         rectangle_floating_pizza = rootView.findViewById(R.id.rectangle_floating_pizza);
         floating_count_text = rootView.findViewById(R.id.floating_count_text);
         floating_subtotal_text = rootView.findViewById(R.id.floating_subtotal_text);
-        relativeLayoutFloating = rootView.findViewById(R.id.relativeLayoutFloating);
+        relativeLayoutFloating = rootView.findViewById(R.id.rectangle_floating_pizza_starters);
 
         CartDBHelper dbHelper = new CartDBHelper(getContext());
         int itemCount = dbHelper.getItemCount(); // You need to implement getItemCount method in CartDBHelper

@@ -31,6 +31,8 @@ public class SplashScreen  extends AppCompatActivity {
                     SharedPreferences sharedPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
                     boolean isLogged = sharedPrefs.getBoolean("isLogged", false);
                     String loginMethod = sharedPrefs.getString("loginMethod", "");
+                    String email = sharedPrefs.getString("email", "");
+                    String password = sharedPrefs.getString("password", "");
 
                     Intent intent = null;
 
